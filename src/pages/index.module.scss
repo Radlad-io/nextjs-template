@@ -1,0 +1,18 @@
+@import "@styles/colors.module.scss";
+@import "@styles/sizes.module.scss";
+
+.title {
+  width: 100%;
+  margin: $vertical-margin $vertical-margin / 4;
+  padding: 6rem 2rem 8rem;
+  background-color: $xiketic;
+  h1 {
+    margin: 4rem 0;
+    text-align: center;
+    color: $white;
+  }
+  p {
+    color: $white;
+    text-align: center;
+  }
+}
