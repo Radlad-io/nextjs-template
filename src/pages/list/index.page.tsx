@@ -12,7 +12,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
   // https://dummyjson.com/
   const res = await fetch(`https://dummyjson.com/posts`);
   const data = await res.json();
-
   // Pass data to the page via props
   return {
     props: { data },
@@ -30,7 +29,7 @@ interface Properties {
 }
 
 const ListPage: FC<Properties> = (props) => {
-  const { posts } = props;
+  const { posts } = props.data;
   return (
     <Container>
       <h1>Post List</h1>

@@ -16,7 +16,7 @@ const Card: FC<Properties> = (props) => {
   // Returns
   return (
     <>
-      <Link href={"./"} prefetch={false}>
+      <Link href={"./list"} prefetch={false} scroll={false}>
         <article className={styles.card}>
           <h2>{title}</h2>
           <p>read more</p>

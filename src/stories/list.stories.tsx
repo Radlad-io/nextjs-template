@@ -1,5 +1,5 @@
 import { Meta, Story } from "@storybook/react";
-import List, { getServerSideProps } from "./list";
+import List, { getServerSideProps } from "../pages/list/index.page";
 
 export default {
   title: "Pages/List",

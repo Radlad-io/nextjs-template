@@ -1,6 +1,7 @@
 @import "@styles/sizes.module.scss";
+@import "@styles/colors.module.scss";
 
 .heading {
-  color: black;
+  color: $xiketic;
   margin: $vertical-margin / 4;
 }
