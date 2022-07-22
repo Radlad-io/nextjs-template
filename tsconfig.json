@@ -17,7 +17,6 @@
     "baseUrl": ".",
     "paths": {
       "@libs/*": ["src/libs/*"],
-      "@utils/*": ["src/utils/*"],
       "@styles/*": ["src/styles/*"],
       "@components/*": ["src/components/*"],
       "@atoms/*": ["src/components/atoms/*"],

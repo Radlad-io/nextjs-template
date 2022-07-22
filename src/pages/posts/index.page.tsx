@@ -1,10 +1,13 @@
 import { FC } from "react";
+import { NextPage } from "next";
 
 // Type definitions provided by next
 import { GetServerSideProps } from "next";
 
 // Components
 import Container from "@components/atoms/Container/Container";
+import Featured from "@components/templates/Featured";
+import Link from "@components/atoms/Link/Link";
 
 // This gets called on every request
 export const getServerSideProps: GetServerSideProps = async () => {
@@ -28,18 +31,14 @@ interface Properties {
   reactions?: number;
 }
 
-const ListPage: FC<Properties> = (props) => {
+const PostsPage: NextPage<Properties> = (props) => {
   const { posts } = props.data;
   return (
     <Container>
-      <h1>Post List</h1>
-      <ul>
-        {posts.map(({ title, id }: { title: string; id: number }) => (
-          <li key={id}>{title}</li>
-        ))}
-      </ul>
+      <Link route={"/"}>Return to home</Link>
+      <Featured posts={posts} heading={"All posts"} />
     </Container>
   );
 };
 
-export default ListPage;
+export default PostsPage;

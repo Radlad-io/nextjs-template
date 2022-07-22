@@ -12,4 +12,5 @@ export const Card = Template.bind({});
 Card.args = {
   title:
     "His mother had always taught him not to ever think of himself as better than others.",
+  route: "/posts/test",
 };

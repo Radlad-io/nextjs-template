@@ -2,15 +2,41 @@ import type { NextPage } from "next";
 import Image from "next/image";
 import Head from "next/head";
 import styles from "./index.module.scss";
-
 import { motion } from "framer-motion";
 import variants from "./index.motion";
+
+// Type definitions provided by next
+import { GetServerSideProps } from "next";
 
 // Components
 import Heading from "@components/atoms/Heading/Heading";
 import Featured from "@components/templates/Featured";
 
-const Home: NextPage = () => {
+// This gets called on every request
+export const getServerSideProps: GetServerSideProps = async () => {
+  // Fetch data from external API
+  // https://dummyjson.com/
+  const res = await fetch(`https://dummyjson.com/posts`);
+  const data = await res.json();
+  // Pass data to the page via props
+  return {
+    props: { data },
+  };
+};
+
+interface Properties {
+  [key: string]: any;
+  id?: number;
+  title?: string;
+  body?: string;
+  userId?: number;
+  tags?: number;
+  reactions?: number;
+}
+
+const HomePage: NextPage<Properties> = (props) => {
+  const { posts } = props.data;
+
   return (
     <div className={styles.container}>
       <Head>
@@ -41,11 +67,11 @@ const Home: NextPage = () => {
             </p>
           </motion.div>
         </motion.div>
-        <Featured />
+        <Featured heading={"Featured posts"} posts={posts} limit={6} />
         <div className={styles.spacer}></div>
       </main>
     </div>
   );
 };
 
-export default Home;
+export default HomePage;

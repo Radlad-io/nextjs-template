@@ -1,5 +1,7 @@
 import { FC } from "react";
 import styles from "./Featured.module.scss";
+import { motion } from "framer-motion";
+import variants from "./Featured.motion";
 
 //Components
 import Container from "@components/atoms/Container/Container";
@@ -10,24 +12,33 @@ import Grid from "@components/atoms/Grid/Grid";
 
 interface Properties {
   children?: JSX.Element | JSX.Element[];
+  posts: Array<String>;
+  heading: string;
+  limit?: number;
 }
 
 const Featured: FC<Properties> = (props) => {
   // Destructing
-  const { children } = props;
+  const { children, posts, heading, limit } = props;
 
   return (
-    <section>
+    <motion.section
+      variants={variants.featured}
+      initial={"initial"}
+      whileInView={"in"}
+      viewport={{ once: true }}
+      exit={"out"}
+    >
       <Container>
-        <Heading size={1}>Featured Articles</Heading>
-        <CardList />
-        <Grid justify="flex-end" alignItems="flex-end">
+        <Heading size={1}>{heading}</Heading>
+        <CardList posts={posts} limit={limit} />
+        {/* <Grid justify="flex-end" alignItems="flex-end">
           <Grid>
-            <Button dark>See More</Button>
           </Grid>
-        </Grid>
+        </Grid> */}
+        <Button dark>See More</Button>
       </Container>
-    </section>
+    </motion.section>
   );
 };
 

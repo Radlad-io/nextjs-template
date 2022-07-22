@@ -1,5 +1,6 @@
 import { FC } from "react";
 import styles from "./Button.module.scss";
+import Link from "next/link";
 
 interface Properties {
   children: JSX.Element | JSX.Element[] | string;
@@ -9,9 +10,16 @@ interface Properties {
 const Button: FC<Properties> = (props) => {
   const { children, dark } = props;
 
-  const classes: string = styles.btn + " " + (dark ? styles.dark : "");
+  const classes: string = styles.btn;
 
-  return <button className={classes}>{children}</button>;
+  return (
+    <Link href={"/posts"} scroll={false}>
+      {/* <>
+        <button className={classes}>{children}</button>;
+      </> */}
+      <a className={classes}>Posts</a>
+    </Link>
+  );
 };
 
 Button.defaultProps = {

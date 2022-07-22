@@ -1,5 +1,7 @@
 import { FC } from "react";
 import styles from "./CardList.module.scss";
+import { motion } from "framer-motion";
+import variants from "./CardList.motion";
 
 // Components
 import Card from "@components/molecules/Card/Card";
@@ -12,30 +14,21 @@ interface Properties {
 }
 
 const CardList: FC<Properties> = (props) => {
+  const { posts, limit } = props;
   // Returns
   return (
-    <section className={styles.wrapper}>
+    <motion.div className={styles.wrapper} variants={variants.cardList}>
       <Grid>
-        <Grid column={true} sm={12} lg={6} xl={4}>
-          <Card title="His mother had always taught him..." />
-        </Grid>
-        <Grid column={true} sm={12} lg={6} xl={4}>
-          <Card title="He was an expert but not in a discipline..." />
-        </Grid>
-        <Grid column={true} sm={12} lg={6} xl={4}>
-          <Card title="Dave watched as the forest burned up on the hill." />
-        </Grid>
-        <Grid column={true} sm={12} lg={6} xl={4}>
-          <Card title="ll he wanted was a candy bar." />
-        </Grid>
-        <Grid column={true} sm={12} lg={6} xl={4}>
-          <Card title="Hopes and dreams were dashed that day." />
-        </Grid>
-        <Grid column={true} sm={12} lg={6} xl={4}>
-          <Card title="Dave wasn't exactly sure how he had ended up..." />
-        </Grid>
+        {posts.map(
+          ({ title, id }: { title: string; id: number }, index: number) =>
+            (limit > index || limit === undefined) && (
+              <Grid column={true} sm={12} lg={6} xl={4} key={id}>
+                <Card title={title} route={`/posts/${id}`} />
+              </Grid>
+            )
+        )}
       </Grid>
-    </section>
+    </motion.div>
   );
 };
 

@@ -8,7 +8,6 @@ interface Properties {
 const Paragraph: FC<Properties> = ({ children }) => {
   return (
     <>
-      {/* TODO: Add container class */}
       <div className={styles.wrapper}>
         <p>{children}</p>
       </div>

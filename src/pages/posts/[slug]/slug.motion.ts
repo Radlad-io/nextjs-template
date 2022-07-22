@@ -3,40 +3,40 @@ import { motion } from "framer-motion";
 const variants = {
   bg: {
     initial: {
-      opacity: 0,
+      y: "-100vh",
     },
     in: {
-      opacity: 1,
+      y: 0,
       transition: {
-        duration: 0.5,
-        delayChildren: 0.5,
+        duration: 0.75,
+        delayChildren: 0.75,
       },
     },
     out: {
-      opacity: 0,
+      y: "-100vh",
       transition: {
+        delay: 0.5,
         duration: 0.5,
-        when: "afterChildren",
       },
     },
   },
-  title: {
+  body: {
     initial: {
+      y: 10,
       opacity: 0,
-      transition: {
-        delayChildren: 0.15,
-      },
     },
     in: {
+      y: 0,
       opacity: 1,
       transition: {
-        delayChildren: 0.15,
+        duration: 0.5,
       },
     },
     out: {
+      y: 10,
       opacity: 0,
       transition: {
-        when: "afterChildren",
+        duration: 0.5,
       },
     },
   },
